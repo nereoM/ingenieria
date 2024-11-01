@@ -1,0 +1,29 @@
+[
+    {
+      "usuario": "nereo",
+      "password": "1234",
+      "fechaNacimiento": "1990-01-01",
+      "atenciones": [
+        {
+          "fecha": "2023-10-01",
+          "detalle": "Consulta médica"
+        },
+        {
+          "fecha": "2023-11-01",
+          "detalle": "Seguimiento"
+        }
+      ]
+    },
+    {
+      "usuario": "naim",
+      "password": "6789",
+      "fechaNacimiento": "1985-05-12",
+      "atenciones": [
+        {
+          "fecha": "2023-08-15",
+          "detalle": "Chequeo general"
+        }
+      ]
+    }
+  ]
+  
