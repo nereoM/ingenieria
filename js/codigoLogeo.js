@@ -90,18 +90,31 @@ document.addEventListener("DOMContentLoaded", () => {
 */
 
 document.addEventListener("DOMContentLoaded", () => {
-
     // Datos JSON en una variable
-    const usuarios = [
-        {
-            "usuario": "nereo",
-            "password": "1234"
-        },
-        {
-            "usuario": "naim",
-            "password": "6789"
-        }
-    ];
+    // const usuarios = [
+    //     {
+    //         "nombre": "Nereo",
+    //         "tipo": "Coordinador",
+    //         "password": "1",
+    //         "zona": "Muñiz"
+    //     },
+    //     {
+    //         "nombre": "Naza",
+    //         "tipo": "Coordinador",
+    //         "password": "2",
+    //         "zona": "San Miguel"
+    //     },
+    //     {
+    //         "nombre": "Naim",
+    //         "tipo": "Paciente",
+    //         "password": "1"
+    //     },
+    //     {
+    //         "nombre": "Sele",
+    //         "tipo": "Paciente",
+    //         "password": "2"
+    //     }
+    // ];
 
     const formLogeo = document.getElementById("login-form");
   
@@ -110,16 +123,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const username = document.querySelector("#username").value;
         const pass = document.querySelector("#password").value;
 
-        // Buscando el usuario en la lista de usuarios
-        const usuarioEncontrado = usuarios.find(user => user.usuario === username && user.password === pass);
+
+        const usuarioEncontrado = usuarios.find(user => user.nombre === username && user.password === pass);
 
         if (usuarioEncontrado) {
-            // Redireccionar si se encuentra el usuario
-            window.location.href = "index.html";
+            if (usuarioEncontrado.tipo === "Coordinador") {
+                usuarioEncontrado.iniciado = "si";
+                console.log(usuarioEncontrado);
+                window.location.href = "indexCor.html";
+            }
+            if (usuarioEncontrado.tipo === "Paciente") {
+                window.location.href = "indexPac.html";
+            }
         } else {
-            // Mostrar alerta si las credenciales son incorrectas
             alert('Usuario o contraseña incorrectos');
         }
     });
 });
-
