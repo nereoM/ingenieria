@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const userFound = usuarios.find(user => user.nombre === username && user.password === pass);
 
         if (userFound) {
+            localStorage.setItem("usuarioLogueado", userFound.nombre);
             if (userFound.tipo === "Coordinador") {
                 const usersActual = JSON.parse(localStorage.getItem("users"));
 

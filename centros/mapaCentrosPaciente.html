@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +28,7 @@
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        var map = L.map('map').setView([-34.548542, -58.698838], 12);
+        var map = L.map('map').setView([-34.548542, -58.698838], 14);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -60,6 +61,21 @@
         L.marker([-34.549361, -58.673087]).addTo(map)
             .bindPopup('Hospital Militar</b><br><a href="hospitalMilitar.html" target="_blank">Ir a Hospital Militar</a>')
             .openPopup();
+
+        const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
+        console.log("Usuario logueado:", usuarioLogueado); // Verifica que el usuario está bien recuperado
+
+        // Función para verificar si el hospital está en la lista de hospitales atendidos por el usuario
+        function puedeAcceder(hospital) {
+            if (usuarioLogueado && usuarioLogueado.atendido && usuarioLogueado.atendido.includes(hospital)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     </script>
 </body>
 </html>
+
+
+

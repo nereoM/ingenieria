@@ -39,7 +39,7 @@
             <option value="10">10</option>
         </select>
 
-        <label>2. Cuánto tiempo tuvo que esperar?</label>
+        <label>2. Cómo evaluaría el tiempo de espera?</label>
         <select name="espera" required>
             <option value="" disabled selected>Seleccione una opción</option>
             <option value="1">1</option>
@@ -179,6 +179,20 @@
         
         <button type="submit">Enviar</button>
     </form>
+
+    <script>
+        function saveSurveyData() {
+            const form = document.getElementById('surveyForm');
+            const formData = new FormData(form);
+            const data = {};
+
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            localStorage.setItem('surveyData', JSON.stringify(data));
+            alert("Encuesta guardada exitosamente.");
+        }
+    </script>
 </body>
 </html>
 
