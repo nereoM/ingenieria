@@ -15,6 +15,20 @@ document.addEventListener("DOMContentLoaded", () => {
             "password": "2",
             "zona": "Muñiz",
             "iniciado": "No"
+        },
+        {
+            "nombre": "Naim",
+            "tipo": "Paciente",
+            "password": "1",
+            "atendido": ["Larcade", "Militar"],
+            "iniciado": "No"
+        },
+        {
+            "nombre": "Juan",
+            "tipo": "Paciente",
+            "password": "1",
+            "atendido": ["Bessone", "Militar"],
+            "iniciado": "No"
         }
     ];
     
