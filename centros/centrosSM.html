@@ -27,15 +27,12 @@
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        // Inicializar el mapa
-        var map = L.map('map').setView([-34.542658, -58.711856], 14.5); // Ubicación centrada en Buenos Aires
+        var map = L.map('map').setView([-34.542658, -58.711856], 14.5);
 
-        // Añadir una capa de mapa de OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Marcador de ejemplo
         L.marker([-34.536071, -58.720476]).addTo(map)
             .bindPopup('<b>Hospital Larcade</b><br><a href="larcadeCoord.html" target="_blank">Ir a Hospital Larcade</a>')
             .openPopup();

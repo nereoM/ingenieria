@@ -9,83 +9,66 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
         }
-        form {
+        h1 {
+            color: #4CAF50;
+        }
+        .survey-list {
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .survey-item {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #e0f7fa;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
         }
-        label {
+        .survey-name {
             font-weight: bold;
+        }
+        .status {
+            font-size: 0.9em;
+            color: #FF5252;
         }
     </style>
 </head>
 <body>
     <h1>Hospital Sarmiento.</h1>
 
-    <div id="surveyResults"></div>
+    <div class="survey-list" id="pacientesQueContestaron">
+        <h2>Pacientes sin contestar</h2>
+    </div>
 
     <script>
         const surveys = [
-            {
-                atencion: "8",
-                espera: "6",
-                personal_salud: "9",
-                instalaciones: "7",
-                insumos: "5",
-                estado_instalaciones: "8",
-                sanidad: "9",
-                ocupacion: "7",
-                comunicacion: "8",
-                recomendacion: "10",
-                comentario: "Excelente hospital, pero se podría mejorar el tiempo de espera."
-            },
-            {
-                atencion: "9",
-                espera: "8",
-                personal_salud: "10",
-                instalaciones: "9",
-                insumos: "8",
-                estado_instalaciones: "9",
-                sanidad: "10",
-                ocupacion: "8",
-                comunicacion: "9",
-                recomendacion: "9",
-                comentario: "Muy buena experiencia. Las instalaciones están en buen estado."
-            },
-            {
-                atencion: "6",
-                espera: "5",
-                personal_salud: "7",
-                instalaciones: "6",
-                insumos: "4",
-                estado_instalaciones: "5",
-                sanidad: "6",
-                ocupacion: "6",
-                comunicacion: "7",
-                recomendacion: "6",
-                comentario: "Aceptable, aunque falta personal en algunas áreas."
-            }
+            { nombre: "Nereo", estado: "contestada" },
+            { nombre: "Naim", estado: "!contestada" },
+            { nombre: "Naza", estado: "contestada" },
+            { nombre: "Juan", estado: "!contestada" },
+            { nombre: "Luis", estado: "!contestada" },
+            { nombre: "Matias", estado: "!contestada" },
+            { nombre: "Valentin", estado: "!contestada" }
         ];
-        const resultsDiv = document.getElementById('surveyResults');
-        surveys.forEach((survey, index) => {
-            resultsDiv.innerHTML += `<div class="survey">
-                <h2>Encuesta ${index + 1}</h2>
-                <ul>
-                    <li><strong>1. Atención:</strong> ${survey.atencion}</li>
-                    <li><strong>2. Tiempo de espera:</strong> ${survey.espera}</li>
-                    <li><strong>3. Personal de salud:</strong> ${survey.personal_salud}</li>
-                    <li><strong>4. Instalaciones:</strong> ${survey.instalaciones}</li>
-                    <li><strong>5. Insumos:</strong> ${survey.insumos}</li>
-                    <li><strong>6. Estado de las instalaciones:</strong> ${survey.estado_instalaciones}</li>
-                    <li><strong>7. Sanidad:</strong> ${survey.sanidad}</li>
-                    <li><strong>8. Ocupación:</strong> ${survey.ocupacion}</li>
-                    <li><strong>9. Comunicación del personal:</strong> ${survey.comunicacion}</li>
-                    <li><strong>10. Recomendación:</strong> ${survey.recomendacion}</li>
-                    <li><strong>Comentario adicional:</strong> ${survey.comentario}</li>
-                </ul>
-            </div>`;
+
+        const resultsDiv = document.getElementById('pacientesQueContestaron');
+        surveys.forEach(survey => {
+            if (survey.estado === "!contestada") {
+                resultsDiv.innerHTML += `
+                    <div class="survey-item">
+                        <span class="survey-name">${survey.nombre}</span>
+                        <span class="status">Pendiente</span>
+                    </div>
+                `;
+            }
         });
     </script>
 </body>

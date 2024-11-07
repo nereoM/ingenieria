@@ -27,15 +27,13 @@
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        // Inicializar el mapa
-        var map = L.map('map').setView([-34.550219, -58.700737], 14.5); // Ubicación centrada en Buenos Aires
 
-        // Añadir una capa de mapa de OpenStreetMap
+        var map = L.map('map').setView([-34.550219, -58.700737], 14.5);
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Marcador de ejemplo
         L.marker([-34.549254, -58.702500]).addTo(map)
             .bindPopup('Hospital Plaza</b><br><a href="plazaCoord.html" target="_blank">Ir a Hospital Plaza</a>')
             .openPopup();
