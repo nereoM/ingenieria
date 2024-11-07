@@ -37,10 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const logForm = document.getElementById("login-form");
     logForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const username = document.querySelector("#username").value;
-        const pass = document.querySelector("#password").value;
 
-        const userFound = usuarios.find(user => user.nombre === username && user.password === pass);
+        const userFound = existeUsuario(usuarios);
 
         if (userFound) {
             localStorage.setItem("usuarioLogueado", userFound.nombre);
@@ -55,10 +53,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.href = "indexCor.html";
             }
             if (userFound.tipo === "Paciente") {
+                const usersActual = JSON.parse(localStorage.getItem("users"));
+
+                const sameUser = usersActual.find(user => user.nombre === userFound.nombre);
+                sameUser.iniciado = "Si";
+
+                localStorage.setItem("users", JSON.stringify(usersActual));
+
                 window.location.href = "indexPac.html";
             }
         } else {
             alert('Usuario o contraseña incorrectos');
         }
     });
+
+    function existeUsuario(usuarios) {
+        const username = document.querySelector("#username").value;
+        const pass = document.querySelector("#password").value;
+
+        const userFound = usuarios.find(user => user.nombre === username && user.password === pass);
+
+        return userFound;
+    }
 });
